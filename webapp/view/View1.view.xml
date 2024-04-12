@@ -1,0 +1,58 @@
+<mvc:View
+    controllerName="thriftshop.controller.View1"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:table="sap.ui.table"
+>
+    <Page
+        id="page"
+		showHeader="false"
+    >
+        <smartFilterBar:SmartFilterBar
+            id="smartFilterBar"
+            entitySet="Products"
+            persistencyKey="SmartFilter_Explored"
+        >
+            <!-- <smartFilterBar:controlConfiguration>
+					<smartFilterBar:ControlConfiguration key="Bukrs">
+					<smartFilterBar:defaultFilterValues>
+							<smartFilterBar:SelectOption low="0001">
+							</smartFilterBar:SelectOption>
+						</smartFilterBar:defaultFilterValues>
+					</smartFilterBar:ControlConfiguration>
+					<smartFilterBar:ControlConfiguration key="Gjahr">
+						<smartFilterBar:defaultFilterValues>
+								<smartFilterBar:SelectOption low="2014">
+								</smartFilterBar:SelectOption>
+							</smartFilterBar:defaultFilterValues>
+						</smartFilterBar:ControlConfiguration>
+				</smartFilterBar:controlConfiguration> -->
+        </smartFilterBar:SmartFilterBar>
+        <smartTable:SmartTable
+            id="LineItemsSmartTable"
+            entitySet="Products"
+            enableAutoBinding="true"
+            initiallyVisibleFields="Name,Description,Price,Rating"
+			ignoreFromPersonalisation="ID"
+			smartFilterId="smartFilterBar"
+			tableType="ResponsiveTable"
+			enableAutoColumnWidth="true"
+        >
+ 
+            <table:Table rowActionCount="1">
+                <table:rowActionTemplate>
+                    <table:RowAction>
+                        <table:RowActionItem
+                            type="Navigation"
+                            press="fnPress"
+                        />
+                    </table:RowAction>
+                </table:rowActionTemplate>
+            </table:Table>
+        </smartTable:SmartTable>
+    </Page>
+</mvc:View>
